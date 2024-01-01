@@ -1,5 +1,6 @@
 package br.com.alura.screenmatch.principal;
 
+import br.com.alura.screenmatch.model.DadosEpisodios;
 import br.com.alura.screenmatch.model.DadosSerie;
 import br.com.alura.screenmatch.model.DadosTemporada;
 import br.com.alura.screenmatch.service.ConsumoApi;
@@ -37,12 +38,21 @@ public class Principal {
             }
             temporadas.forEach(System.out::println);
 
+            for(int i = 0; i < dados.totalTemporadas(); i++){
+                List<DadosEpisodios> episodios = temporadas.get(i).episodios();
+                for(int j = 0; j < episodios.size(); j++){
+                    System.out.println(episodios.get(j).titulo());
+                }
+            }
+
+            temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo())));
+
             // Perguntar ao usuário se ele deseja continuar
             System.out.println("Deseja buscar outra série? (s/n)");
             opcao = leitura.nextLine();
-        } while ("s".equalsIgnoreCase(opcao));  // O loop continua enquanto o usuário digitar "s" ou "S"
+        } while ("s".equalsIgnoreCase(opcao));
 
-        System.out.println("Encerrando...");  // Uma mensagem de encerramento pode ser útil
+        System.out.println("Encerrando...");
     }
 
 }
