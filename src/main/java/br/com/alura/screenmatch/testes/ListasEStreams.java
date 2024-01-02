@@ -1,27 +1,23 @@
 package br.com.alura.screenmatch.testes;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class ListasEStreams {
     public static void main(String[] args) {
-        List<String> palavras = Arrays.asList("Java", "Stream", "Operações", "Intermediárias");
-
-        List<Integer> tamanhos = palavras.stream()
-                .map(String::length)
-                .collect(Collectors.toList());
-
-        System.out.println(tamanhos); // Output: [4, 6, 11, 17]
-
         List<String> nomes = new ArrayList<>();
-        nomes.add("Louise");
-        nomes.add("Venilson");
-        nomes.add("Luiz");
-        nomes.add("Lorena");
+        Scanner entrada = new Scanner(System.in);
+        for(int i = 1; i <= 5; i++){
+            System.out.println("Digite o nome " + i);
+            nomes.add(entrada.nextLine());
+        }
 
-        nomes.stream().sorted().limit(2).forEach(System.out::println);
+        nomes.stream().sorted().forEach(System.out::println);
+
+        Map<String, Integer> meusNomes = new HashMap<>();
+        meusNomes.put("Louise", 45);
+        meusNomes.put("Lucas", 495);
+        meusNomes.put("Venilson", 7);
+        System.out.println(meusNomes);
 
     }
 }
